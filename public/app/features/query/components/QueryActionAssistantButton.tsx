@@ -37,9 +37,9 @@ export function QueryActionAssistantButton<TQuery extends DataQuery = DataQuery>
     return null;
   }
 
-  // Only show for loki and prometheus datasources
+  // Prometheus and loki both have their own buttons inside their query editors
   const pluginId = dataSourceInstanceSettings.type;
-  if (pluginId !== 'loki' && pluginId !== 'prometheus') {
+  if (pluginId === 'loki' || pluginId === 'prometheus') {
     return null;
   }
   const origin = `grafana/query-editor/${pluginId}/${app ?? CoreApp.Unknown}`;
